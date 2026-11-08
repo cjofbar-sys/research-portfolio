@@ -1,0 +1,52 @@
+name: University pathways synthetic analysis
+on:
+  push:
+    paths:
+      - '05-reproducible-examples/university-pathways/**'
+      - '.github/workflows/university-pathways-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproducibility:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 05-reproducible-examples/university-pathways
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: 05-reproducible-examples/university-pathways/requirements.txt
+      - name: Install scientific dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Validate source and synthetic data invariants
+        run: python -m unittest discover -s tests -v
+      - name: Reproduce analysis
+        run: python analysis.py --output results
+      - name: Verify provenance and numerical bounds
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          a=json.loads(pathlib.Path("results/summary.json").read_text())
+          assert a["metadata"]["synthetic"] is True
+          assert a["metadata"]["students"]==1170
+          assert 0<=a["descriptive"]["timely_graduation_rate"]<=1
+          assert 0<=a["descriptive"]["graduation_by_12_rate"]<=1
+          assert a["models"]["timely_graduation_first_gen"]["converged"]
+          assert a["models"]["employment_internship_conditional_on_graduation"]["converged"]
+          ci=a["competing_risks"]
+          assert len(ci)==12
+          assert all(x["graduation_cif"]+x["withdrawal_cif"]<=1.00001 for x in ci)
+          print("SYNTHETIC_CASE_VERIFIED", a["metadata"])
+          PY
+      - name: Upload reproducible synthetic output
+        uses: actions/upload-artifact@v4
+        with:
+          name: university-pathways-synthetic-results
+          path: 05-reproducible-examples/university-pathways/results/
+          retention-days: 30
