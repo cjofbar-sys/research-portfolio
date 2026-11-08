@@ -1,0 +1,198 @@
+{
+  "metadata": {
+    "synthetic": true,
+    "seed": 20261108,
+    "source": "analysis.py",
+    "students": 1170,
+    "campuses": 6,
+    "cohorts": 3,
+    "followup_semesters": 12
+  },
+  "descriptive": {
+    "timely_graduation_rate": 0.5521,
+    "graduation_by_12_rate": 0.6932,
+    "withdrawal_rate": 0.2889,
+    "employed_among_graduates_rate": 0.529,
+    "employment_denominator": 811,
+    "first_generation_groups": [
+      {
+        "first_gen": 0,
+        "entrants": 613,
+        "timely": 406,
+        "graduates": 488,
+        "timely_rate": 0.6623,
+        "graduation_rate": 0.7961
+      },
+      {
+        "first_gen": 1,
+        "entrants": 557,
+        "timely": 240,
+        "graduates": 323,
+        "timely_rate": 0.4309,
+        "graduation_rate": 0.5799
+      }
+    ]
+  },
+  "models": {
+    "timely_graduation_first_gen": {
+      "n": 1170,
+      "term": "first_gen",
+      "log_odds": -1.102,
+      "odds_ratio": 0.3322,
+      "or_ci95": [
+        0.2471,
+        0.4466
+      ],
+      "p_value": 0.0,
+      "converged": true
+    },
+    "standardized_timely_graduation": {
+      "predicted_probability_first_gen_0": 0.6401,
+      "predicted_probability_first_gen_1": 0.4591,
+      "risk_difference_1_minus_0": -0.181
+    },
+    "semester_credit_progression": {
+      "n_observations": 9674,
+      "n_students": 1136,
+      "semester_coefficient": -0.0183,
+      "semester_ci95": [
+        -0.049,
+        0.0124
+      ],
+      "first_gen_coefficient": -0.9137,
+      "first_gen_ci95": [
+        -1.0968,
+        -0.7305
+      ]
+    },
+    "employment_internship_conditional_on_graduation": {
+      "n": 811,
+      "term": "internship",
+      "log_odds": 0.7699,
+      "odds_ratio": 2.1596,
+      "or_ci95": [
+        1.6101,
+        2.8968
+      ],
+      "p_value": 0.0,
+      "converged": true
+    }
+  },
+  "competing_risks": [
+    {
+      "semester": 1,
+      "at_risk": 1170,
+      "new_graduations": 0,
+      "new_withdrawals": 34,
+      "graduation_cif": 0.0,
+      "withdrawal_cif": 0.02906,
+      "event_free_survival": 0.97094
+    },
+    {
+      "semester": 2,
+      "at_risk": 1136,
+      "new_graduations": 0,
+      "new_withdrawals": 27,
+      "graduation_cif": 0.0,
+      "withdrawal_cif": 0.052137,
+      "event_free_survival": 0.947863
+    },
+    {
+      "semester": 3,
+      "at_risk": 1109,
+      "new_graduations": 0,
+      "new_withdrawals": 21,
+      "graduation_cif": 0.0,
+      "withdrawal_cif": 0.070085,
+      "event_free_survival": 0.929915
+    },
+    {
+      "semester": 4,
+      "at_risk": 1088,
+      "new_graduations": 0,
+      "new_withdrawals": 42,
+      "graduation_cif": 0.0,
+      "withdrawal_cif": 0.105983,
+      "event_free_survival": 0.894017
+    },
+    {
+      "semester": 5,
+      "at_risk": 1046,
+      "new_graduations": 0,
+      "new_withdrawals": 24,
+      "graduation_cif": 0.0,
+      "withdrawal_cif": 0.126496,
+      "event_free_survival": 0.873504
+    },
+    {
+      "semester": 6,
+      "at_risk": 1022,
+      "new_graduations": 0,
+      "new_withdrawals": 32,
+      "graduation_cif": 0.0,
+      "withdrawal_cif": 0.153846,
+      "event_free_survival": 0.846154
+    },
+    {
+      "semester": 7,
+      "at_risk": 990,
+      "new_graduations": 14,
+      "new_withdrawals": 38,
+      "graduation_cif": 0.011966,
+      "withdrawal_cif": 0.186325,
+      "event_free_survival": 0.801709
+    },
+    {
+      "semester": 8,
+      "at_risk": 938,
+      "new_graduations": 140,
+      "new_withdrawals": 36,
+      "graduation_cif": 0.131624,
+      "withdrawal_cif": 0.217094,
+      "event_free_survival": 0.651282
+    },
+    {
+      "semester": 9,
+      "at_risk": 762,
+      "new_graduations": 259,
+      "new_withdrawals": 35,
+      "graduation_cif": 0.352991,
+      "withdrawal_cif": 0.247009,
+      "event_free_survival": 0.4
+    },
+    {
+      "semester": 10,
+      "at_risk": 468,
+      "new_graduations": 233,
+      "new_withdrawals": 26,
+      "graduation_cif": 0.552137,
+      "withdrawal_cif": 0.269231,
+      "event_free_survival": 0.178632
+    },
+    {
+      "semester": 11,
+      "at_risk": 209,
+      "new_graduations": 121,
+      "new_withdrawals": 14,
+      "graduation_cif": 0.655556,
+      "withdrawal_cif": 0.281197,
+      "event_free_survival": 0.063248
+    },
+    {
+      "semester": 12,
+      "at_risk": 74,
+      "new_graduations": 44,
+      "new_withdrawals": 9,
+      "graduation_cif": 0.693162,
+      "withdrawal_cif": 0.288889,
+      "event_free_survival": 0.017949
+    }
+  ],
+  "limitations": [
+    "All data and effects are simulated; no estimates describe actual students.",
+    "Standardized associations are not causal effects.",
+    "Employment is observed only for simulated graduates (selection).",
+    "Graduation and withdrawal are competing first events.",
+    "Unmeasured factors and designed simulation assumptions shape estimates."
+  ]
+}
