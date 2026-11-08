@@ -44,6 +44,12 @@ jobs:
           assert all(x["graduation_cif"]+x["withdrawal_cif"]<=1.00001 for x in ci)
           print("SYNTHETIC_CASE_VERIFIED", a["metadata"])
           PY
+      - name: Set up R for independent validation
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: 'release'
+      - name: Validate selected models and competing risks in base R
+        run: Rscript validation.R results/synthetic_students.csv results/synthetic_semesters.csv
       - name: Upload reproducible synthetic output
         uses: actions/upload-artifact@v4
         with:
