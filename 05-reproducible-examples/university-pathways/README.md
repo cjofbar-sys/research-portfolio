@@ -13,7 +13,7 @@ Students move through institutions where academic progress, withdrawal, degree c
 
 ## Computational workflow
 - Python: reproducible simulator, validation, descriptive cohort summaries, standardized association models, a correlated repeated-measures model, competing-risk life table, and machine-readable results for website visualizations.
-- R: independent follow-up validation of selected estimates is **planned**, not yet completed.
+- R: an independent base-R validation script reproduces selected estimates from Python-generated synthetic CSVs. Its execution is included in the latest CI workflow; check the workflow's conclusion before claiming completion.
 - Website: charts should be driven by a saved version of the **synthetic** analysis output, with the same seed, sample definition and analytic code. Do not recompute inferential models in browser code.
 
 ## Study definitions
@@ -43,3 +43,7 @@ A cultural and developmental interpretation needs appropriate information about 
 
 ## Reuse
 This example is independent from participant data and source code in private observatory or application repositories. Reuse only public principles of provenance, status labeling and analytical transparency; do not copy private product datasets or private implementation details.
+
+## Verified results and interpretation
+
+Read [RESULTS_INTERPRETATION.md](RESULTS_INTERPRETATION.md) for the 2026-11-08 Python-verified case, the meaning of denominators, competing risks, model-based odds ratios and conditional employment analysis. The source test run passed; R validation should be checked separately in the newer workflow execution. Never detach the published synthetic numbers from the seed, model version and data-generation assumptions.
