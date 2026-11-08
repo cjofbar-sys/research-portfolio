@@ -13,7 +13,7 @@ Students move through institutions where academic progress, withdrawal, degree c
 
 ## Computational workflow
 - Python: reproducible simulator, validation, descriptive cohort summaries, standardized association models, a correlated repeated-measures model, competing-risk life table, and machine-readable results for website visualizations.
-- R: an independent base-R validation script reproduces selected estimates from Python-generated synthetic CSVs. Its execution is included in the latest CI workflow; check the workflow's conclusion before claiming completion.
+- R: an independent base-R validation script reproduces selected estimates from Python-generated synthetic CSVs. The independent base-R validation has now completed successfully in [the joint Python/R workflow](https://github.com/cjofbar-sys/research-portfolio/actions/runs/42448180637).
 - Website: charts should be driven by a saved version of the **synthetic** analysis output, with the same seed, sample definition and analytic code. Do not recompute inferential models in browser code.
 
 ## Study definitions
