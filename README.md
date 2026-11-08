@@ -14,7 +14,8 @@ The central questions concern how possibilities for action and becoming are cons
 | [Research lines](02-research-lines/README.md) | Interdisciplinary interlocutions and epistemological bridges |
 | [Selected projects](03-selected-projects/README.md) | High-level, status-qualified accounts of research systems |
 | [Methods laboratory](04-research-methods/README.md) | Decisions, measurement, diagnostics, inference and interpretation |
-| [Reproducible examples](05-reproducible-examples/longitudinal-multilevel/README.md) | Synthetic longitudinal and multilevel demonstration in Python |
+| [University pathways — verified synthetic case](05-reproducible-examples/university-pathways/README.md) | Executed Python and R workflow: graduation, competing risks, GEE, adjusted models and employment selection |
+| [Longitudinal multilevel demonstration](05-reproducible-examples/longitudinal-multilevel/README.md) | Earlier synthetic model-development example (separate from the verified university-pathways case) |
 | [Scholarly outputs](06-scholarly-outputs/README.md) | Bibliographic verification in progress |
 | [Academic experience](07-academic-experience/README.md) | Research, teaching, institutional and technical contributions |
 | [Visual atlas](08-visual-atlas/README.md) | Evidence-oriented diagrams and explanatory visuals |
@@ -26,7 +27,7 @@ The central questions concern how possibilities for action and becoming are cons
 
 ## Methodological orientation
 
-Research design begins from the phenomenon and the scientific question. Statistical models, qualitative analysis, simulations, instruments, and computational systems acquire significance through explicit decisions about what they can establish and what remains undetermined. The [first laboratory demonstration](05-reproducible-examples/longitudinal-multilevel/README.md) makes these questions examinable through entirely synthetic student trajectories.
+Research design begins from the phenomenon and the scientific question. Statistical models, qualitative analysis, simulations, instruments, and computational systems acquire significance through explicit decisions about what they can establish and what remains undetermined. The [university pathways demonstration](05-reproducible-examples/university-pathways/README.md) provides an executed, publicly reproducible simulation of tertiary education progression, degree completion and transition to employment. Its [verified analysis](05-reproducible-examples/university-pathways/RESULTS_INTERPRETATION.md), [machine-readable synthetic results](05-reproducible-examples/university-pathways/results/summary.json) and [automated Python/R checks](https://github.com/cjofbar-sys/research-portfolio/actions/runs/42448180637) allow independent inspection. The earlier [multilevel learning example](05-reproducible-examples/longitudinal-multilevel/README.md) remains separately available.
 
 ## Documentation status and safeguards
 
