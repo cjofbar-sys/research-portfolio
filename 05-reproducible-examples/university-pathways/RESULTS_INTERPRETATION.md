@@ -43,4 +43,4 @@ The synthetic case is an exercise in constructing and criticizing statistical ex
 
 ## Reproduction status
 
-Python automated pipeline and four source tests completed successfully in the linked GitHub Actions run. [The verified summary JSON](results/summary.json) is committed for consumption by the personal website. The R script [validation.R](validation.R) is available for independent reproduction on the generated student CSV but has **not** been certified by an executed R validation in this record.
+Python automated pipeline and four source tests completed successfully in the linked GitHub Actions run. [The verified summary JSON](results/summary.json) is committed for consumption by the personal website. The R script [validation.R](validation.R) is available for independent reproduction on the generated student CSV but has also completed successfully in the [joint Python/R CI run](https://github.com/cjofbar-sys/research-portfolio/actions/runs/42448180637). It independently recomputes the first-event competing-risk life table and selected logistic estimates from the Python-generated synthetic CSVs; this is not an audit of a real dataset.
