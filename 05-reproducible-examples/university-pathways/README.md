@@ -51,3 +51,10 @@ Read [RESULTS_INTERPRETATION.md](RESULTS_INTERPRETATION.md) for the 2026-11-08 P
 ## Next statistical development: GEE versus multilevel inference
 
 The [multilevel comparison protocol](MULTILEVEL_COMPARISON_PROTOCOL.md) specifies how to contrast the verified student-clustered GEE with a student-level random-intercept mixed model, diagnose variance components and convergence, and consider campus heterogeneity cautiously given only six simulated campuses. **No multilevel estimates have been executed or published in the current JSON.** The protocol explicitly examines the simulator's lack of an imposed residual student intercept, and the selection introduced by graduation and withdrawal. Numerical model comparisons must pass an additional reproducible execution and validation gate before entering the dashboard.
+
+
+## Executed comparison with a student-level mixed model (2026-11-10)
+
+The design protocol above is now complemented by a separate executed **synthetic** computation: [Python source](multilevel_comparison.py), [versioned numeric snapshot](results/multilevel_comparison.json), [new tests](tests/test_multilevel_comparison.py), and [critical interpretation](MULTILEVEL_RESULTS_INTERPRETATION.md). The student random-intercept LMM and the existing Gaussian GEE were computed on the same generated panel: 1,136 observed students and 9,674 semester records. Fixed-effect estimates were similar; the residual student ICC was approximately 0.00153. **The mixed-model optimizer issued a singular random-effects covariance warning despite reporting convergence.** This warning and the lack of deliberately generated residual student intercepts make the exercise a model-criticism demonstration, not proof of a stable hierarchical variance effect.
+
+The added [GitHub Actions check](../../.github/workflows/university-pathways-multilevel.yml) is intended to independently rerun tests and compare the versioned snapshot; inspect its outcome before claiming remote CI success. Do not replace the original verified `results/summary.json`, and do not interpret synthetic variances as psychological constructs.
