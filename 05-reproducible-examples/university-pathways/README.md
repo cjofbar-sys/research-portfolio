@@ -47,3 +47,7 @@ This example is independent from participant data and source code in private obs
 ## Verified results and interpretation
 
 Read [RESULTS_INTERPRETATION.md](RESULTS_INTERPRETATION.md) for the 2026-11-08 Python-verified case, the meaning of denominators, competing risks, model-based odds ratios and conditional employment analysis. The source test run passed; R validation should be checked separately in the newer workflow execution. Never detach the published synthetic numbers from the seed, model version and data-generation assumptions.
+
+## Next statistical development: GEE versus multilevel inference
+
+The [multilevel comparison protocol](MULTILEVEL_COMPARISON_PROTOCOL.md) specifies how to contrast the verified student-clustered GEE with a student-level random-intercept mixed model, diagnose variance components and convergence, and consider campus heterogeneity cautiously given only six simulated campuses. **No multilevel estimates have been executed or published in the current JSON.** The protocol explicitly examines the simulator's lack of an imposed residual student intercept, and the selection introduced by graduation and withdrawal. Numerical model comparisons must pass an additional reproducible execution and validation gate before entering the dashboard.
