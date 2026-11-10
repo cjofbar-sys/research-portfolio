@@ -1,0 +1,115 @@
+{
+  "metadata": {
+    "synthetic": true,
+    "seed": 20261108,
+    "students_total": 1170,
+    "students_observed": 1136,
+    "student_semesters": 9674,
+    "campuses": 6,
+    "single_observation_students": 27,
+    "model_formula": "credits_earned ~ semester + first_gen + preparation + support + C(campus)",
+    "sample_note": "Credit records end at graduation or withdrawal; observation may be selective."
+  },
+  "gee": {
+    "type": "marginal gaussian GEE",
+    "working_correlation": "exchangeable",
+    "correlation": 0.006303739979114885,
+    "converged": true,
+    "terms": {
+      "semester": {
+        "estimate": -0.01834545053822127,
+        "ci95": [
+          -0.04904752896469726,
+          0.012356627888254725
+        ],
+        "standard_error": 0.015664613568744157
+      },
+      "first_gen": {
+        "estimate": -0.9136879602370426,
+        "ci95": [
+          -1.0968405162153059,
+          -0.7305354042587793
+        ],
+        "standard_error": 0.09344689873025594
+      },
+      "preparation": {
+        "estimate": 2.4721887937122577,
+        "ci95": [
+          2.368690612628275,
+          2.5756869747962403
+        ],
+        "standard_error": 0.05280616475627255
+      },
+      "support": {
+        "estimate": 1.8437370093692038,
+        "ci95": [
+          1.7191204283258195,
+          1.9683535904125882
+        ],
+        "standard_error": 0.06358105660427647
+      }
+    }
+  },
+  "lmm": {
+    "type": "Gaussian student random-intercept mixed model",
+    "group": "student_id",
+    "estimation": "REML",
+    "converged": true,
+    "optimizer": "lbfgs",
+    "student_intercept_variance": 0.029716930102491147,
+    "residual_variance": 19.426419691348414,
+    "residual_icc": 0.0015273808300527373,
+    "near_boundary": false,
+    "terms": {
+      "semester": {
+        "estimate": -0.020171710601691966,
+        "ci95": [
+          -0.05131951277714876,
+          0.010976091573764824
+        ],
+        "standard_error": 0.015892027823545065
+      },
+      "first_gen": {
+        "estimate": -0.9135051453208299,
+        "ci95": [
+          -1.0932031581339872,
+          -0.7338071325076726
+        ],
+        "standard_error": 0.09168434431989177
+      },
+      "preparation": {
+        "estimate": 2.4704931476487433,
+        "ci95": [
+          2.3717571658252288,
+          2.569229129472258
+        ],
+        "standard_error": 0.050376426609025096
+      },
+      "support": {
+        "estimate": 1.842205131019095,
+        "ci95": [
+          1.7158162749498265,
+          1.9685939870883635
+        ],
+        "standard_error": 0.064485295171854
+      }
+    },
+    "optimizer_attempts": [
+      {
+        "optimizer": "lbfgs",
+        "converged": true,
+        "warnings": [
+          "Random effects covariance is singular"
+        ]
+      }
+    ]
+  },
+  "interpretation_guards": [
+    "Entirely synthetic observations; no real institutional finding.",
+    "GEE population-average and mixed-model conditional interpretations are not interchangeable.",
+    "Simulator does not impose a residual student-level random intercept after covariate adjustment.",
+    "Only six campus levels; campus modeled as a fixed effect.",
+    "Graduation and withdrawal end observed semester credits: the mixed model does not correct selection.",
+    "Residual ICC is not a measurement of psychological meaning-making."
+  ]
+}
