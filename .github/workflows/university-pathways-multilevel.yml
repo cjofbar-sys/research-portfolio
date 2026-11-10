@@ -1,0 +1,45 @@
+name: Synthetic university-pathways multilevel validation
+
+on:
+  push:
+    paths:
+      - "05-reproducible-examples/university-pathways/analysis.py"
+      - "05-reproducible-examples/university-pathways/multilevel_comparison.py"
+      - "05-reproducible-examples/university-pathways/tests/test_multilevel_comparison.py"
+      - "05-reproducible-examples/university-pathways/results/multilevel_comparison.json"
+      - ".github/workflows/university-pathways-multilevel.yml"
+  workflow_dispatch:
+
+jobs:
+  validate-multilevel:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 05-reproducible-examples/university-pathways
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install public case dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run original and multilevel checks
+        run: python -m unittest discover -s tests -v
+      - name: Recompute GEE and multilevel estimates and compare committed snapshot
+        env:
+          OPENBLAS_NUM_THREADS: "1"
+        run: python multilevel_comparison.py --verify-snapshot results/multilevel_comparison.json
+      - name: Verify output reproducible and JSON numeric
+        env:
+          OPENBLAS_NUM_THREADS: "1"
+        run: |
+          python multilevel_comparison.py --output /tmp/multilevel_check.json
+          python - <<'PY'
+          import json, math
+          with open('/tmp/multilevel_check.json') as f:
+              x=json.load(f)
+          assert x['metadata']['synthetic'] is True
+          assert x['lmm']['converged'] and x['gee']['converged']
+          assert math.isfinite(x['lmm']['residual_icc'])
+          print('Recomputed synthetic results and checks passed')
+          PY
